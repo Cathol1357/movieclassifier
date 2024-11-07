@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>映画感情分析Webアプリ</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="review-container">
+        <h1>あなたの入力した映画レビュー</h1>
+        <div class="content">{{ content }}</div>
+      </div>
+
+      <div class="prediction-container">
+        <h1>予測結果</h1>
+        <div class="result">
+          この映画レビューは、<strong>{{ prediction }}</strong>です。(確率 : {{
+          probability }} %)
+        </div>
+      </div>
+
+      <div id="button">
+        <form action="/thanks" method="post">
+          <input type="submit" value="あってる" name="feedback_button" />
+          <input type="submit" value="まちがってる" name="feedback_button" />
+          <input type="hidden" value="{{ prediction }}" name="prediction" />
+          <input type="hidden" value="{{ content }}" name="review" />
+        </form>
+      </div>
+
+      <div id="button">
+        <form action="/">
+          <input type="submit" value="もう一度やる" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

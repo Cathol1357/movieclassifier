@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>映画感情分析Webアプリ</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>感情判定したい映画のレビューを入力してね<br />（英語のみ）</h1>
+
+      {% from "_formhelpers.html" import render_field %}
+
+      <form method="post" action="/results">
+        <dl>{{ render_field(form.moviereview, cols='30', rows='10') }}</dl>
+        <div>
+          <input type="submit" value="レビューを送信" name="submit_btn" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
